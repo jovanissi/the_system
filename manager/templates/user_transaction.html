@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			#validation_slip_picture
+			{
+				margin-bottom: 2%;
+			}
+			.label
+			{
+				font-size: 14px;
+				font-weight: bold;
+				color: #66000f;
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+			
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="slip_insertio_title">Transaction details</h4>
+				<div id="">
+					<p><span class="label">Date:</span>{{deposit.trans_date}}</p>
+				</div>
+				<div id="">
+					<p><span class="label">Depositor names:</span>{{deposit.depositor_name}}</p>
+				</div>
+				<div id="">
+					<p><span class="label">Account number:</span>{{deposit.account_number}}</p>
+				</div>
+				<div>
+					<p><span class="label">Account name:</span>{{deposit.account_name}}</p>
+				</div>
+				<div>
+					<p><span class="label">Slip number:</span>{{deposit.slip_number}}</p>
+				</div>
+				<div id="">
+					<p><span class="label">Deposited amount:</span>{{deposit.money_in}}Rwf</p>
+				</div>
+				<div id="">
+					<p><span class="label">Period:</span>{{deposit.contribution_months}}</p>
+				</div>
+				<div id="">
+					<p><span class="label">Comment:</span>{{deposit.trans_comment}}</p>
+				</div>
+				<div id="validation_slip_picture">
+					<label class="label">Slip-picture: </label>
+					<img src="{{deposit.transaction_proof.url}}" alt="Slip picture" id="slip_picture" >
+				</div>
+			</div>
+		</div>	
+
+	</div>
+
+{% endblock %}
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/validate.js' %}"></script>
+{% endblock %}

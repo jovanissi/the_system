@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			#in-out-operations
+			{
+				margin-top: 50px;
+				color: #66000f
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+			<div class="dropdown" id="dropdown">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="">
+					<a href="#"><b class="caret"></b></a>
+				</button>
+				<div class="dropdown-menu dropdown-menu-right" id="dropdown-menu">
+					<button class="btn btn-default" id="dropdown-logout"><a href="logout">Logout</a></button>
+				</div>
+			</div>
+		</header>
+		
+		<div id="records_links">
+		 	<ul>
+				<li id="records_button">
+					<form method="POST" class="form-horizontal" action="all_deposits">{% csrf_token %}
+						<label for="Date" class="col-sm-1 control-label">From:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="in_from_date" id="other_date" required>
+						</div>
+						<label for="Date" class="col-sm-1 control-label">To:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="in_to_date" id="other_date" required>
+						</div>
+						<button type="submit" class="btn btn-default">Deposited</button>
+					</form>
+				</li>
+			</ul>
+			<ul>
+				<li id="records_button">
+					<form method="POST" class="form-horizontal" action="all_withdrawals">{% csrf_token %}
+						<label for="Date" class="col-sm-1 control-label">From:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="out_from_date" id="other_date" required>
+						</div>
+						<label for="Date" class="col-sm-1 control-label">To:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="out_to_date" id="other_date" required>
+						</div>
+						<button type="submit" class="btn btn-default">Withdrew</button>
+					</form>
+				</li>
+			</ul>
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="balance">Balance</a></li>
+			</ul>
+		</div>
+		<h5 id="in-out-operations">About each account</h5>	
+		<div>
+			<ul>
+				<label for="">Choose account:</label>
+				{% for bank_acc in bank_account %}
+				<li class="btn btn-default" id="balance_button"><a href="account-0{{bank_acc.id}}">{{bank_acc.account_name}}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		<h5 id="in-out-operations">Deposit / Withdraw operations</h5>	
+		<div>
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="deposit">Deposit</a></li>
+			</ul>
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="withdraw">Withdraw</a></li>
+			</ul>
+		</div>
+		
+		<h5 id="in-out-operations">Pending deposits</h5>
+		{% for deposits in user_deposits%}
+			{% if deposits.categories == 'Pending' %}
+			<div>
+				<ul>
+					<li><a href="0{{deposits.id}}">{{deposits.depositor_name}} / {{deposits.trans_date}}</a></li>
+				</ul>
+			</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+{% endblock %}

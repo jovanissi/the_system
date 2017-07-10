@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="user_account">My account</a></div>
+
+		<div id="user_redirection">
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="deposit">Deposit</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="user_deposit">My deposits</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="withdrawals">Withdrew amount</a></li>
+			</ul>
+		</div>
+
+		<h4 id="deposit_history">My deposits</h4>
+		<div class="table-responsive">
+		<table class="table table-condensed table-striped table-bordered table-hover" >
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Account No</th>
+					<th>Account name</th>
+					<th>Slip number</th>
+					<th>Month</th>
+					<th>Comment</th>
+					<th>Categories</th>
+					<th class="text-center">Amount(Rwf)</th>
+				</tr>
+			</thead>
+
+			{% for contributions in user_deposits %}
+			<tbody>
+				<tr class="clickable-row" data-href='user-transaction-0{{contributions.id}}'>
+					<td>{{contributions.trans_date}}</td>
+					<td>{{contributions.account_number}}</td>
+					<td>{{contributions.account_name}}</td>
+					<td>{{contributions.slip_number}}</td>
+					<td>{{contributions.contribution_months}}</td>
+					<td>{{contributions.trans_comment}}</td>
+					<td>{{contributions.categories}}</td>
+					<td class="text-right">{{contributions.money_in}}</td>
+				</tr>
+			</tbody>
+			{% endfor %}
+
+		</table>
+		</div>
+		<p id="table-title">Total deposited amount: {{sum_user_deposits}}Rwf</p>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script>
+		$(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    })
+	</script>
+{% endblock %}

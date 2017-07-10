@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			#validation_slip_picture
+			{
+				margin-bottom: 2%;
+			}
+			.label
+			{
+				font-size: 14px;
+				font-weight: bold;
+				color: #66000f;
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+			
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="slip_insertio_title">Transaction details</h4>
+				<div id="">
+					<p><span class="label">Date:</span>{{withdraw.trans_date}}</p>
+				</div>
+				<div id="">
+					<p><span class="label">Account number:</span>{{withdraw.account_number}}</p>
+				</div>
+				<div>
+					<p><span class="label">Account name:</span>{{withdraw.account_name}}</p>
+				</div>
+				<div>
+					<p><span class="label">Slip number:</span>{{withdraw.slip_number}}</p>
+				</div>
+				<div id="">
+					<p><span class="label">Withdrew amount:</span>{{withdraw.money_out}}Rwf</p>
+				</div>
+				<div id="">
+					<p><span class="label">Reason:</span>{{withdraw.trans_comment}}</p>
+				</div>
+				<div id="validation_slip_picture">
+					<label class="label">Slip-picture: </label>
+					<img src="{{withdraw.transaction_proof.url}}" alt="Slip picture" id="slip_picture" >
+				</div>
+			</div>
+		</div>	
+
+	</div>
+
+{% endblock %}
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/validate.js' %}"></script>
+{% endblock %}

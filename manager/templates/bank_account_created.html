@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<div id="sign_up_form_wrapper">
+		<h4 id="core_management_system">Core Management System</h4>
+		<h5 id="create_account">New Bank Account</h5>
+		<form class="form-horizontal" method="POST" action="bank_account" role="form" enctype="multipart/form-data"> {% csrf_token %}
+			<div class="form-group">
+				<label for="Name" class="col-sm-2 control-label">Account Name</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="" name="account_name" id="" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Surname" class="col-sm-2 control-label">Account Number</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="" name="account_number" id="" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Name" class="col-sm-2 control-label">Bank Name</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="" name="bank_name" id="" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Surname" class="col-sm-2 control-label">Creation Date</label>
+				<div class="col-sm-3">
+					<input type="date" class="form-control" placeholder="" name="creation_date" id="" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Surname" class="col-sm-2 control-label">Account Proof</label>
+				<div class="col-sm-3">
+					<input type="file" class="form-control" placeholder="" name="proof_of_creation" id="" required>
+				</div>
+			</div>
+			<div  class="" id="sign_up_button">
+				<button type="submit" class="btn btn-default">Sign up</button>
+			</div>
+		</form>
+		<div class="alert alert-success pull-left wow fadeInRight" role="alert">
+        	<h5>Bank Account Register Successfully</h5>
+		</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/' %}"></script>
+{% endblock %}
+

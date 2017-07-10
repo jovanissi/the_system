@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="user_account">My account</a></div>
+
+		<div id="user_redirection">
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="deposit">Deposit</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="user_deposit">My deposits</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="withdrawals">Withdrew amount</a></li>
+			</ul>
+		</div>
+
+		<h4 id="withdraw_history">Withdrawals record</h4>
+		<div class="table-responsive">
+		<table class="table table-condensed table-striped table-bordered table-hover" >
+			<thead>
+				<tr>
+					<th class="">Date</th>
+					<th class="">Account No</th>
+					<th class="">Account name</th>
+					<th class="">Slip number</th>
+					<th class="">Reason</th>
+					<th class="text-center">Amount(Rwf)</th>
+				</tr>
+			</thead>
+
+		{% for withdrawals in all_withdrawals %}
+			<tbody>
+				<tr class="clickable-row" data-href='out-transaction-0{{withdrawals.id}}'>
+					<td class="">{{withdrawals.trans_date}}</td>
+					<td class="">{{withdrawals.account_number}}</td>
+					<td class="">{{withdrawals.account_name}}</td>
+					<td class="">{{withdrawals.slip_number}}</td>
+					<td class="">{{withdrawals.trans_comment}}</td>
+					<td class="text-right">{{withdrawals.money_out}}</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+
+		</table>
+		</div>
+		<p id="table-title">Total withdrawals: {{sum_withdrawals}}Rwf</p>
+		<div id="balance-indicator2">
+			<h4>Total Balance: {{balance}}Rwf</h4>
+		</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script>
+		$(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    })
+	</script>
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="user_account">My account</a></div>
+
+		<div id="user_redirection">
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="deposit">Deposit</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="user_deposit">My deposits</a></li>
+		
+				<li class="btn btn-default" id="balance_button"><a href="withdrawals">Withdrew amount</a></li>
+			</ul>
+		</div>
+			
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="slip_insertio_title">Aho kwinjiriza bordereau</h4>
+				
+				<form class="form-horizontal" method="POST" action="shareholder_deposit" id="" enctype="multipart/form-data"> {% csrf_token %}
+				<input type="text" name="trans_type" value="in_trans" readonly="readonly" hidden>
+				<input type="text" name="depositor_type" value="shareholder" readonly="readonly" hidden>
+				<input type="text" name="categories" value="Pending" readonly="readonly" hidden>
+				<input type="hidden" id="" name="user_id" value="{{user.id}}" size="10" readonly="readonly">
+					<!-- <div id="date">
+						<ul>
+							<li>
+								<label for="Date">Date:</label>
+								<input class="date" type="date" name="date" required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label for="date" class="col-sm-2 control-label">Date:</label>
+						<div class="col-sm-3">
+							<input type="date" class="form-control date" name="date"  required>
+						</div>
+					</div>
+					<!-- <div id="date">
+						<ul>
+							<li>
+								<label for="Date">Depositor names:</label>
+								<input type="text" name="depositor_names" value="{{user.first_name}} {{user.last_name}}" required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label for="depositor_names" class="col-sm-2 control-label">Depositor names:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="depositor_names" value="{{user.first_name}} {{user.last_name}}"  required>
+						</div>
+					</div>
+					<!-- <div id="number_name_slip">
+						<ul >
+							<li>
+								<label for="account_number">Account name:</label>
+								<select class="account_name" name="account_name" id="">
+
+								{% for account in bank_account %}
+								<option value="{{account.account_number}}">{{account.account_name}}</option>
+								{% endfor %}
+
+								</select>
+							</li>
+
+							<br>
+
+							<li>
+								<label for="account_number">Account number:</label>
+								<input class="account_number" readonly="readonly" type="text" name='account_number' required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Account name:</label>
+						<div class="col-sm-3">
+							<select class="form-control account_name" name="account_name">
+								{% for account in bank_account %}
+								<option value="{{account.account_number}}">{{account.account_name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="account_number" class="col-sm-2 control-label">Account number:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control account_number" readonly="readonly" name="account_number" required>
+						</div>
+					</div>
+					<!-- <div id="amount">
+						<ul>
+							<li>
+								<label for="slip_number">Slip number:</label>
+								<input type="text" id="slip_number" name="slip_number" required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label for="slip_number" class="col-sm-2 control-label">Slip number:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="slip_number" required>
+						</div>
+					</div>
+					<!-- <div id="amount">
+						<ul>
+							<li>
+								<label for="amount">Deposited amount:</label>
+								<input type="text" name="deposited_amount" required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label for="deposited_amount" class="col-sm-2 control-label">Deposited amount:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="deposited_amount" required>
+						</div>
+					</div>
+					
+					<div name="number_of_months" class="form-group" required>
+						<label for="number_of_months" class="col-sm-2 control-label">Period:</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Jan"> Jan
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Feb"> Feb
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Mar"> Mar
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Apr"> Apr
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="May"> May
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Jun"> Jun
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Jul"> Jul
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Aug"> Aug
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Sept"> Sept
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Oct"> Oct
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Nov"> Nov
+						</label>
+						<label class="checkbox-inline">
+							<input type="checkbox" id="" name="number_of_months" value="Dec"> Dec
+						</label>
+					</div>
+					
+					<!-- <div id="comment">
+						<ul>
+							<li>
+								<label for="comment">Comment:</label>
+								<input type="text" name="comment" required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label for="comment" class="col-sm-2 control-label">Comment:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="comment" required>
+						</div>
+					</div>
+					<!-- <div id="slip_picture">
+						<ul>
+							<li>
+								<label for="">Slip-picture</label>
+								<input type="file" class="" id="" name="slip_picture" required>
+							</li>
+						</ul>
+					</div> -->
+					<div class="form-group">
+						<label for="slip_picture" class="col-sm-2 control-label">Proof document:</label>
+						<div class="col-sm-3">
+							<input type="file" class="form-control" name="slip_picture" required>
+						</div>
+					</div>
+					<div  class="" id="submit_slip_button">
+						<button type="submit" class="btn btn-default" id="submit_slip">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>	
+	</div>
+{% endblock %}
+
+{% block script %}
+
+	<script type="text/javascript" src="{% static 'js/controls.js' %}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			#not_validate
+			{
+				margin-top: 1%;
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+			
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="slip_insertio_title">Slip validation</h4>
+				<form method="POST" action="validate" id=""> {% csrf_token %}
+					<input id="slip_pk" name="slip_pk" type="hidden" value="{{user_deposits.shareholder_deposit_slip_number}}">
+					<div id="">
+					<p><span class="label">Date:</span>{{user_deposits.trans_date}}</p>
+					</div>
+					<div id="">
+						<p><span class="label">Depositor names:</span>{{user_deposits.depositor_name}}</p>
+					</div>
+					<div id="">
+						<p><span class="label">Account number:</span>{{user_deposits.account_number}}</p>
+					</div>
+					<div>
+						<p><span class="label">Account name:</span>{{user_deposits.account_name}}</p>
+					</div>
+					<div>
+						<p><span class="label">Slip number:</span>{{user_deposits.slip_number}}</p>
+					</div>
+					<div id="">
+						<p><span class="label">Deposited amount:</span>{{user_deposits.money_in}}Rwf</p>
+					</div>
+					<div id="">
+						<p><span class="label">Period:</span>{{user_deposits.contribution_months}}</p>
+					</div>
+					<div id="">
+						<p><span class="label">Comment:</span>{{user_deposits.trans_comment}}</p>
+					</div>
+					<!-- <div id="date">
+						<ul>
+							<li>
+								<label for="Date">Date:</label>
+								<p>{{user_deposits.trans_date}}</p>
+							</li>
+						</ul>
+					</div> -->
+					<!-- <div id="number_name_slip">
+						<ul >
+							<li>
+								<label for="account_number">Account number:</label>
+								<p>{{user_deposits.account_number}}</p>
+							</li>
+							<li>
+								<label for="account_number">Account name:</label>
+								<p>{{user_deposits.account_name}}</p>
+							</li>
+							<li>
+								<label for="slip_number">Slip number:</label>
+								<p>{{user_deposits.slip_number}}</p>
+							</li>
+						</ul>
+					</div>
+					<div id="amount">
+						<ul>
+							<li>
+								<label for="amount">Deposited amount:</label>
+								<p>{{user_deposits.money_in}}</p>
+							</li>
+						</ul>
+					</div> -->
+					<!-- <div id="number_of_months">
+						<ul>
+							<li>
+								<div>
+									<label for="number_of_months">Period:</label>
+									<p>{{user_deposits.contribution_months}}</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="comment">
+						<ul>
+							<li>
+								<label for="comment">Comment:</label>
+								<p>{{user_deposits.trans_comment}}</p>
+							</li>
+						</ul>
+					</div> -->
+					<div id="validation_slip_picture">
+						<label class="label">Slip-picture</label>
+						<img src="{{user_deposits.transaction_proof.url}}" alt="Slip picture" id="slip_picture" >
+					</div>
+				</form>
+				<div class="" id="validation_slip_button">
+					<form method="POST" action="validate"> {% csrf_token %}
+						<input id="slip_pk" name="slip_pk" type="hidden" value="{{user_deposits.slip_number}}">
+						<input type="submit" class="btn btn-default" id="valid" value="Validate">
+					</form>
+				</div>
+				<div id="not_validate">
+					<form method="POST" action="not_valid"> {% csrf_token %}
+						<input id="slip_pk" name="slip_pk" type="hidden" value="{{user_deposits.slip_number}}">
+						<input type="submit" class="btn btn-default" id="invalid" value="Not Validate">
+					</form>
+				</div>
+			</div>
+		</div>	
+
+	</div>
+
+{% endblock %}
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/validate.js' %}"></script>
+{% endblock %}

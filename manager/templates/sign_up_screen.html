@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<div id="sign_up_form_wrapper">
+		<h4 id="core_management_system">Core Management System</h4>
+		<h5 id="create_account">Create account</h5>
+		<form class="form-horizontal" method="POST" action="register" role="form" id="sign_up_form" enctype="multipart/form-data"> {% csrf_token %}
+			<div class="form-group">
+				<label for="Name" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Enter your name" name="first_name" id="name" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Surname" class="col-sm-2 control-label">Surname</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Enter your surname" name="last_name" id="surname" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Posts" class="col-sm-2 control-label">Posts</label>
+				<div>
+					<select class="" placeholder=" " name="post" id="">
+						<option value="Null">Null</option>
+						<option value="CBO">CBO</option>
+						<option value="CEO">CEO</option>
+						<option value="CEO">CFO</option>
+						<option value="COO">COO</option>
+						<option value="CTO">CTO</option>
+						<option value="Brand Ambassador">Brand Ambassador</option>
+						<option value="Graphic Designer">Graphic Designer</option>
+						<option value="Software Developer">Software Developer</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="date_of_birth" class="col-sm-2 control-label">Date of birth</label>
+				<div class="col-sm-3">
+					<input type="date" class="form-control" name="birth_date" id="birth_date" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="National_ID" class="col-sm-2 control-label">National_ID</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Enter your NID" name="NID" id="nid" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">E-mail</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Enter your E-mail" name="email" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phone" class="col-sm-2 control-label">Phone</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Phone number" name="phone" id="phone" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Username" class="col-sm-2 control-label">Enter-Username</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" placeholder="Username" name="username" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="Password" class="col-sm-2 control-label">Enter-Password</label>
+				<div class="col-sm-3">
+					<input type="password" class="form-control" placeholder="Password" name="password1" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password_confirm" class="col-sm-2 control-label">Confirm-password</label>
+				<div class="col-sm-3">
+					<input type="password" class="form-control" placeholder="Password" name="password2" required>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label" for="">Passport-picture</label>
+				<div class="col-sm-3">
+					<input type="file" class="form-control" id="" name="user_picture" required>
+				</div>
+			</div>
+			<div  class="" id="sign_up_button">
+				<button type="submit" class="btn btn-default">Sign up</button>
+			</div>
+		</form>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/sign_up_reload.js' %}"></script>
+{% endblock %}
+

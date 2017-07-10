@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			.clickable
+			{
+				cursor: pointer;
+			}
+			
+			.danger
+			{
+				background-color: #d42139;
+			}
+
+			.danger:hover
+			{
+				background-color: #d42139;
+			}
+
+			.clickable:hover
+			{
+				background-color: #d42139;
+				color: white;
+			}
+			#withdrawal_title
+			{
+				color: #66000f
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Withdraw</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="withdrawal_title">Recording a withdrawal</h4>
+
+				<form class="form-horizontal" method='POST' action="ayasohotse" id="" enctype="multipart/form-data"> {% csrf_token %}
+					<input type="text" readonly="readonly" name="trans_type" value="out_trans" hidden>
+					<input type="text" readonly="readonly" name="categories" value="Approved" hidden>
+					<div class="form-group">
+						<label for="date_of_birth" class="col-sm-2 control-label">Date:</label>
+						<div class="col-sm-3">
+							<input type="date" class="form-control date" name="date"  required>
+						</div>
+					</div>
+					
+					<div class="btn-group">
+						<button type="button" class="btn btn-danger danger">Choose account name</button>
+						<button type="button" class="btn btn-danger dropdown-toggle danger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    <span class="caret"></span>
+						    <span class="sr-only">Toggle Dropdown</span>
+					  	</button>
+					  	<ul class="dropdown-menu">
+						{% for account in bank_account %}
+							<li class="clickable acc-chooser" acc-nbr="{{account.account_number}}" acc-name="{{account.account_name}}" balance="{{account.balance}}">{{account.account_name}}</li>
+						{% endfor %}
+					  	</ul>
+					</div>
+
+							<br>
+
+					<div class="form-group">
+						<label for="account_name" class="col-sm-2 control-label">Account name:</label>
+						<div class="col-sm-3">
+							<input class="form-control account_name" readonly="readonly" type="text" name='account_name' required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="account_name" class="col-sm-2 control-label">Account number:</label>
+						<div class="col-sm-3">
+							<input class="form-control account_number" readonly="readonly" type="text" name='account_number' required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="slip_number" class="col-sm-2 control-label">Slip number:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="slip_number"  required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="withdrew_amount" class="col-sm-2 control-label">Withdrew amount:</label>
+						<div class="col-sm-3">
+							<input class="form-control sum" readonly="readonly" type="hidden" name="acc_balance">
+							<input type="text" class="form-control withdrew_amount" name="withdrew_amount" required>
+							<input type="hidden" class="form-control" readonly="readonly" value="200" name="surplus" hidden>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="reason" class="col-sm-2 control-label">Reason:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="reason" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="withdraw_slip_picture" class="col-sm-2 control-label">Slip-picture:</label>
+						<div class="col-sm-3">
+							<input type="file" class="form-control" name="withdraw_slip_picture" required>
+						</div>
+					</div>
+					<div  class="" id="submit_slip_button">
+						<button type="submit" class="btn btn-default" id="withdraw_operation">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>	
+
+	</div>
+
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/controls.js' %}"></script>
+
+	<script>
+		$('.acc-chooser').click(function(){
+			$('.account_name').val($(this).attr('acc-name'));
+			$('.account_number').val($(this).attr('acc-nbr'));
+			$('.sum').val($(this).attr('balance'));
+		})
+	</script>
+{% endblock %}

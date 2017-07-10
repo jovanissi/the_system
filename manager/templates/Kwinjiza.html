@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			#slip_insertio_title
+			{
+				color: #66000f
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Deposit</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="slip_insertio_title">Recording a deposit</h4>
+				
+				<form class="form-horizontal" method='POST' action="others_deposit" id="" enctype="multipart/form-data"> {% csrf_token %}
+					<input type="text" readonly="readonly" name="trans_type" value="in_trans" hidden>
+					<input type="text" readonly="readonly" name="depositor_type" value="other" hidden>
+					<input type="text" readonly="readonly" name="categories" value="Approved" hidden>
+				
+					<div class="form-group">
+						<label for="date" class="col-sm-2 control-label">Date:</label>
+						<div class="col-sm-3">
+							<input type="date" class="form-control date" name="date"  required>
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<label for="names" class="col-sm-2 control-label">Depositor names:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="names"  required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Mode:</label>
+						<div class="col-sm-3">
+							<select class="form-control type" name="classifications">
+								<option value="Cash">Cash</option>
+								<option value="Cheque">Cheque</option>
+							</select>
+						</div>
+					</div>
+					<div id="cheque_number">
+						<ul>
+							<li class="form-group">
+								<label class="col-sm-2 control-label">Cheque number:</label>
+								<div class="col-sm-3">
+									<input class="form-control c-nbr" type="text" name='cheque_number'>
+								</div>
+							</li>
+							<li class="form-group">
+								<label class="col-sm-2 control-label">Bank:</label>
+								<div class="col-sm-3">
+									<input class="form-control c-bank" type="text" name='cheque_bank'>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Account name:</label>
+						<div class="col-sm-3">
+							<select class="form-control account_name" name="account_name">
+								{% for account in bank_account %}
+								<option value="{{account.account_number}}">{{account.account_name}}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="account_number" class="col-sm-2 control-label">Account number:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control account_number" readonly="readonly" name="account_number" required>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="slip_number" class="col-sm-2 control-label">Slip number:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="slip_number" required>
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<label for="deposited_amount" class="col-sm-2 control-label">Deposited amount:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="deposited_amount" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="comment" class="col-sm-2 control-label">Comment:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="comment" required>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="slip_picture" class="col-sm-2 control-label">Proof document:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" name="slip_picture" required>
+						</div>
+					</div>
+					<div  class="" id="submit_slip_button">
+						<button type="submit" class="btn btn-default" id="deposit_operation">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>	
+
+	</div>
+
+
+	
+
+{% endblock %}
+
+
+{% block script %}
+
+	<script type="text/javascript" src="{% static 'js/controls.js' %}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			#deposit_history2
+			{
+				color: #66000f;
+				margin-top: 30px;
+			}
+			#balance-indicator p
+			{
+				color: #66000f;
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Balance</p>
+		</header>
+		
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<div id="records_links">
+		 	<ul>
+				<li id="records_button">
+					<form class="form-horizontal" method="POST" action="all_deposits">{% csrf_token %}
+						<label for="Date" class="col-sm-1 control-label">From:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="in_from_date" id="other_date" required>
+						</div>
+						<label for="Date" class="col-sm-1 control-label">To:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="in_to_date" id="other_date" required>
+						</div>
+						<button type="submit" class="btn btn-default">Deposited</button>
+					</form>
+				</li>
+			</ul>
+			<ul>
+				<li id="records_button">
+					<form class="form-horizontal" method="POST" action="all_withdrawals">{% csrf_token %}
+						<label for="Date" class="col-sm-1 control-label">From:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="out_from_date" id="other_date" required>
+						</div>
+						<label for="Date" class="col-sm-1 control-label">To:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="out_to_date" id="other_date" required>
+						</div>
+						<button type="submit" class="btn btn-default">Withdrew</button>
+					</form>
+				</li>
+			</ul>
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="balance">Balance</a></li>
+			</ul>
+		</div>
+		<h5 id="in-out-operations">For specific bank account</h5>	
+		<div>
+			<ul>
+				<label for="">Choose account:</label>
+				{% for bank_acc in bank_account %}
+				<li class="btn btn-default" id="balance_button"><a href="deposits_on_0{{bank_acc.id}}">{{bank_acc.account_name}}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				
+				<h4 id="deposit_history">Overview</h4>
+				<h5 id="deposit_history2">Record of Deposits</h5>
+				<p id="table-title">Deposited by shareholders</p>
+				<div class="table-responsive">
+				<table class="table table-condensed table-striped table-bordered table-hover" >
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Names</th>
+							<th>Account No</th>
+							<th>Account name</th>
+							<th>Slip number</th>
+							<th>Month</th>
+							<th>Comment</th>
+							<th class="text-center">Amount(Rwf)</th>
+						</tr>
+					</thead>
+
+				{% for deposits in shareholders_deposits %}
+					<tbody>
+						<tr class="clickable-row" data-href='user-transaction-0{{deposits.id}}'>
+							<td>{{deposits.trans_date}}</td>
+							<td>{{deposits.depositor_name}}</td>
+							<td>{{deposits.account_number}}</td>
+							<td>{{deposits.account_name}}</td>
+							<td>{{deposits.slip_number}}</td>
+							<td>{{deposits.contribution_months}}</td>
+							<td>{{deposits.trans_comment}}</td>
+							<td class="text-right">{{deposits.money_in}}</td>
+						</tr>
+					</tbody>
+				{% endfor %}
+
+				</table>
+				</div>
+				<p id="table-title">Total: {{sum_shareholder_deposits}}Rwf</p>
+
+				<p id="table-title">Deposited by others</p>
+				<div class="table-responsive">
+				<table class="table table-condensed table-striped table-bordered table-hover" >
+					<thead>
+						<tr>
+							<th class="">Date</th>
+							<th class="">Names</th>
+							<th class="text-center">Cheque number/Bank</th>
+							<th class="">Account No</th>
+							<th class="">Account name</th>
+							<th class="">Slip number</th>
+							<th class="">Comment</th>
+							<th class="text-center">Amount(Rwf)</th>
+						</tr>
+					</thead>
+
+				{% for deposits in others_deposits %}
+					<tbody>
+						<tr class="clickable-row" data-href='in-transaction-0{{deposits.id}}'>
+							<td class="">{{deposits.trans_date}}</td>
+							<td class="">{{deposits.depositor_name}}</td>
+							<td class="text-center">{{deposits.cheque_number}} / {{deposits.cheque_bank}}</td>
+							<td class="">{{deposits.account_number}}</td>
+							<td class="">{{deposits.account_name}}</td>
+							<td class="">{{deposits.slip_number}}</td>
+							<td class="">{{deposits.trans_comment}}</td>
+							<td class="text-right">{{deposits.money_in}}</td>
+						</tr>
+					</tbody>
+				{% endfor %}
+
+				</table>
+				</div>
+				<p id="table-title">Total: {{sum_others_deposits}}Rwf</p>
+				<div id="balance-indicator">
+					<p>Total Deposits: {{sum_deposits}}Rwf</p>
+				</div>
+
+				<h5 id="deposit_history2">Record of Withdrawals</h5>
+				<div class="table-responsive">
+				<table class="table table-condensed table-striped table-bordered table-hover" >
+					<thead>
+						<tr>
+							<th class="">Date</th>
+							<th class="">Account No</th>
+							<th class="">Account name</th>
+							<th class="">Slip number</th>
+							<th class="">Reason</th>
+							<th class="text-center">Amount(Rwf)</th>
+						</tr>
+					</thead>
+
+				{% for withdrawals in withdrew %}
+					<tbody>
+						<tr class="clickable-row" data-href='out-transaction-0{{withdrawals.id}}'>
+							<td class="">{{withdrawals.trans_date}}</td>
+							<td class="">{{withdrawals.account_number}}</td>
+							<td class="">{{withdrawals.account_name}}</td>
+							<td class="">{{withdrawals.slip_number}}</td>
+							<td class="">{{withdrawals.trans_comment}}</td>
+							<td class="text-right">{{withdrawals.money_out}}</td>
+						</tr>
+					</tbody>
+				{% endfor %}
+
+				</table>
+				</div>
+				<div id="balance-indicator">
+					<p>Total Withdrawals: {{sum_withdrawals}}Rwf</p>
+				</div>
+				<div id="balance-indicator2">
+					<h4>Balance: {{balance}}Rwf</h4>
+				</div>
+			</div>
+			<div class="btn btn-default" id="balance_button">
+				<a href="javascript:getPDF()">Print</a>
+			</div>
+		</div>	
+
+	</div>
+
+{% endblock %}
+
+{% block script %}
+	<script type="text/javascript" src="{% static 'js/jspdf.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/pdf_renderer.js' %}"></script>
+	<script>
+		$(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    })
+	</script>
+{% endblock %}

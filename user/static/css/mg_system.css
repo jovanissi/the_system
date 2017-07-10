@@ -1,0 +1,630 @@
+body
+{
+	width: 97%;
+	margin-left: auto;
+	margin-right: auto;
+	background: #f2f2f2;
+}
+/*
+==============================
+-------login_interface--------
+==============================
+*/
+.container-fluid{
+	height: 100%;
+	background: #f2f2f2;
+	position: absolute;
+	width: 97%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+#login_form_wrapper
+{
+	position: absolute;
+	width: 100%;
+	background-color: blue;
+
+}
+
+#login_form
+{
+	position: relative;
+	margin-top: 15%;
+	width: 94%;
+	margin-left: 2%;
+}
+
+#remember_checkbox
+{
+	margin-left: 40%;
+}
+
+#sign_in_button
+{
+	margin-left: 40%;
+}
+
+#sign_in_button button
+{
+	background-color:  #d42139;
+	color: #fff;
+}
+
+#sign_in_button button:hover
+{
+	background-color: #f2f2f2;
+	color: #d42139;
+}
+
+#sign_up_link
+{
+	margin-left: 41%;
+	color:  #d42139;
+}
+
+/*
+==============================
+-----sign_up_interface--------
+==============================
+*/
+
+#header
+{
+	position: fixed;
+	width: 100%;
+	font-weight: bold;
+	background-color:  #d42139;
+	color: #fff;
+	margin-top: 0%;
+}
+
+#core_management_system
+{
+	width:;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+#create_account
+{
+	width: ;
+	font-weight: bold;
+	margin-left: 17%;
+	margin-top: 2%;
+	margin-bottom: 1%;
+	color:  #d42139;
+}
+
+#sign_up_form_wrapper
+{
+	position: absolute;
+	width: 97%;
+	height: 100%;
+}
+
+#sign_up_form
+{
+	position: static;
+	margin-left: 5%;
+	width: 80%;
+	margin-right: 0;
+	padding-right: 0;
+}
+
+#sign_up_button
+{
+	margin-top: 2.5%;
+	margin-left: 17%;
+}
+
+#sign_up_button button
+{
+	background-color:  #d42139;
+	color: #fff;
+}
+
+#sign_up_button button:hover
+{
+	background-color: #f2f2f2;
+	color:  #d42139;
+}
+
+/*
+==============================
+----user_account_interface----
+==============================
+*/
+
+.container
+{
+	height: 100%;
+	position: absolute;
+}
+
+#header2
+{
+	position: fixed;
+	width: 100%;
+	background-color: #d42139;
+	color: #d42139;
+	margin-top: 0%;
+}
+
+#core
+{
+	font-weight: bold;
+	background-color: #d42139;
+	color: #fff;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+
+#user-passport
+{
+	position: relative;
+	margin-top: 20%;
+	margin-bottom: 6%;
+	margin-left: 15%;
+	width: 45%;
+	height: 45%;
+	background-color:#fff;
+}
+
+#names_of_the_user
+
+{
+	position: relative;
+	margin-top: 6%;
+	width: 100%;
+	font-weight: bold;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	color:#fff;
+}
+
+#names
+{
+	width: 83%;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	color: #262626;
+}
+
+#user_profil_link
+{
+	position: relative;
+	width: 25%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 15%;
+}
+
+#user_profil_link a
+{
+	color: #fff;
+	font-weight: bold;
+
+}
+
+#user_profil_link a:hover
+{
+	text-decoration: none;
+
+}
+
+#logout_link
+{
+	position: relative;
+	margin-top: 25%;
+	width: 25%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#logout_link a
+{
+	color: #fff;
+	font-weight: bold;
+
+}
+
+#logout_link a:hover
+{
+	text-decoration: none;
+
+}
+
+
+#user_account_wrapper
+{
+	width: 100%;
+	padding: 0 0 0 0;
+	margin-top: 70px;
+}
+
+#user_account_content
+{
+	position: relative;
+	width: 97%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#number_name_slip ul li
+{
+	display: inline;
+}
+
+#date ul li
+{
+	display: inline;
+}
+
+#amount ul li
+{
+	display: inline;
+}
+
+#number_of_months ul li
+{
+	display: inline;
+}
+
+#comment ul li
+{
+	display: inline;
+}
+
+#slip_number
+{
+	width: 8%;
+}
+
+#submit_slip_button button
+{
+	background-color:  #d42139;
+	color: #fff;
+}
+
+#submit_slip_button button:hover
+{
+	background-color: #f2f2f2;
+	color: #d42139;
+}
+
+#slip_picture ul li
+{
+	display: inline;
+}
+
+#deposit_history
+{
+	margin-top: 35px;
+	font-weight: bold;
+	color: #d42139;
+}
+
+#slip_insertio_title
+{
+	font-weight: bold;
+	color: #d42139;
+}
+
+/*@media only screen and (max-width: 767px) {
+	#header2
+{
+	position: fixed;
+	width: 100%;
+	background-color:  #fff;
+	color: #d42139;
+	margin-top: 0%;
+}
+}*/
+
+#dropdown
+{
+	margin-top: 0;
+	padding-top: 0;
+	float: right;
+}
+
+
+#dropdown-menu
+{
+	background-color: #f2f2f2;
+	width: 22%;
+}
+
+#dropdown-logout
+{
+	background-color: #d42139; 
+}
+
+#dropdown-logout:hover
+{
+	background-color: #f2f2f2; 
+}
+
+#dropdown-logout a
+{
+	color: #fff;
+	text-decoration: none; 
+}
+
+#dropdown-logout a:hover
+{
+	color: #d42139;
+	text-decoration: none; 
+}
+
+#balance-indicator p
+{
+	color: #d42139;
+	font-weight: bold;
+}
+
+#balance
+{
+	color: #4d0000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+#balance-indicator2 h4
+{
+	color: #0099ff;
+	font-weight: bold;
+}
+
+/*
+==============================
+---manager_account_interface--
+==============================
+*/
+
+#withdrawal_links
+{
+	margin-top: 70px;
+}
+
+#withdrawal_links ul li
+{
+	display: inline;
+}
+
+#withdrawal_buttons button
+{
+	background-color:  #d42139;
+	color: #fff;
+	margin-left: 4%;
+}
+
+#withdrawal_buttons button:hover
+{
+	background-color: #f2f2f2;
+	color: #d42139;
+}
+
+#withdrawal_buttons1 button
+{
+	background-color:  #d42139;
+	color: #fff;
+}
+
+#withdrawal_buttons1 button:hover
+{
+	background-color: #f2f2f2;
+	color: #d42139;
+}
+
+#records_button button
+{
+	background-color: #d42139;
+	color: #fff;
+}
+
+#balance_button
+{
+	background-color: #d42139;
+}
+
+#balance_button a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+#in-out-operations
+{
+	margin-top: 35px;
+	font-weight: bold;
+}
+
+#records_links
+{
+	margin-top: 70px;
+}
+
+#records_links ul li
+{
+	display: inline;
+}
+
+#months_links a
+{
+	color: #000000;
+	font-weight: bold;
+}
+
+#month_name
+{
+	color: #000;
+	font-weight: bold;
+	margin-top: 35px;
+}
+
+/*
+==============================
+------------Month-------------
+==============================
+*/
+
+#records_links2
+{
+	margin-top: 40px;
+}
+
+#records_links2 ul li
+{
+	display: inline;
+}
+
+#month_name
+{
+	color: #000;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+#deposit_history2
+{
+	margin-top: 20px;
+	font-weight: bold;
+	color: #d42139;
+}
+
+#withdraw_history
+{
+	margin-top: 20px;
+	font-weight: bold;
+	color: #d42139;
+}
+
+#management_button
+{
+	margin-top: 17px;
+	background-color: #d42139;
+}
+
+#management_button a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+/*
+==============================
+----------Validation----------
+==============================
+*/
+
+#validation_slip_button button
+{
+	background-color:  #d42139;
+	color: #fff;
+}
+
+#validation_slip_button button:hover
+{
+	background-color: #f2f2f2;
+	color: #d42139;
+}
+
+#validation_slip_button a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+#validation_slip_button a:hover
+{
+	color: #d42139;
+	text-decoration: none;
+}
+
+#validation_slip_picture ul li
+{
+	display: inline;
+}
+
+#validation_slip_picture img
+{
+	height: 20%;
+	width: 15%;
+}
+
+/*
+==============================
+------------Others------------
+==============================
+*/
+
+#table-title
+{
+	font-weight: bold;
+}
+
+#cash_cheque ul li
+{
+	display: inline;
+}
+
+#source_names ul li
+{
+	display: inline;
+}
+
+#cheque_number ul li
+{
+	display: inline;
+}
+
+#withdrawal_title
+{
+	margin-top: 50px;
+	font-weight: bold;
+	color: #d42139;
+}
+
+#success_alert
+{
+	position: relative;
+	width: 100%;
+	margin-top: 15px;
+	height: 45px;
+}
+
+#success_alert h5
+{
+	position: relative;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#invalid_pop
+{
+	position: relative;
+	background: #f2f2f2;
+}
+
+#withdraw_history
+{
+	margin-top: 70px;
+}
+
+#welcome_title
+{
+	margin-top: 30px;
+}
+
+#users_names
+{
+	font-weight: bold;
+	font-style: italic;
+}

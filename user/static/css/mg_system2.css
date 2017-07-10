@@ -1,0 +1,31 @@
+@media only screen and (max-width: 767px){
+	#core
+	{
+		font-weight: bold;
+		background-color: #d42139;
+		color: #fff;
+		margin-top: 0;
+		padding-top: 0;
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+}
+
+/*@media only screen and (max-width: 767px){
+	#management_button
+	{
+		margin-top: 34px;
+		background-color: #d42139;
+	}
+}*/
+
+#balance_button
+{
+	background-color: #d42139;
+	color: #fff;
+}
+
+#user_redirection
+{
+	margin-top: 20px;
+}

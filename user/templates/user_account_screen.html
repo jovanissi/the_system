@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+		<style>
+			.profile_image img
+			{
+				width: 20%;
+				height: 20%;
+				margin-bottom: 20px;
+				margin-left: 41px;
+			}
+			#welcome_title
+			{
+				margin-left: 3%;
+			}
+			.user_redirection li
+			{
+				float: left;
+			}
+		</style>
+    {% endblock %}
+	<div class="continer">
+
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+			<div class="dropdown" id="dropdown">
+				<button class="btn btn-default" id="dropdown-logout"><a href="logout">Logout</a></button>
+			</div>
+		</header>
+
+		
+		<div id="records_links">
+			<div id="welcome_title">
+				<h5>Welcome <span id="users_names">{{user.first_name}} {{user.last_name}}</span></h5>
+			</div>
+			<div class="profile_image">
+			{% for user_profile in umwirondoro %}
+				<img src="{{user_profile.User_picture.url}}" alt="User picture" id="slip_picture" >
+			{% endfor%}
+			</div>
+			<ul class="user_redirection">
+				<li class="btn btn-default" id="balance_button"><a href="deposit">Deposit</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="user_deposit">My deposits</a></li>
+			
+				<li class="btn btn-default" id="balance_button"><a href="withdrawals">Withdrew amount</a></li>
+			</ul>
+		</div>
+	</div>
+
+{% endblock %}

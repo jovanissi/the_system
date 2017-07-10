@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<h4 id="month_name">{{bank_account.account_name}}</h4>
+		<div id="records_links">
+		 	<ul>
+				<li id="records_button">
+					<form class="form-horizontal" method="POST" action="deposits-per-account">{% csrf_token %}
+						<input type="text" name="account_number" value="{{bank_account.account_number}}" hidden>
+						<label for="Date" class="col-sm-1 control-label">From:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="in_from_date" id="other_date" required>
+						</div>
+						<label for="Date" class="col-sm-1 control-label">To:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="in_to_date" id="other_date" required>
+						</div>
+						<button type="submit" class="btn btn-default">Deposited</button>
+					</form>
+				</li>
+			</ul>
+			<ul>
+				<li id="records_button">
+					<form class="form-horizontal" method="POST" action="withdrawals-per-account">{% csrf_token %}
+						<input type="text" name="account_number" value="{{bank_account.account_number}}" hidden>
+						<label for="Date" class="col-sm-1 control-label">From:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="out_from_date" id="other_date" required>
+						</div>
+						<label for="Date" class="col-sm-1 control-label">To:</label>
+						<div class="col-sm-2">
+							<input type="date" class="form-control" name="out_to_date" id="other_date" required>
+						</div>
+						<button type="submit" class="btn btn-default">Withdrew</button>
+					</form>
+				</li>
+			</ul>
+			<ul>
+				<form method="POST" action="specific-balance">{% csrf_token %}
+					<input type="text" name="account_number" value="{{bank_account.account_number}}" hidden>
+					<button type="submit" class="btn btn-default" id="balance_button">Balance</button>
+				</form>
+				<!-- <li class="btn btn-default" id="balance_button"><a href="balance"></a></li> -->
+			</ul>
+		</div>
+
+	</div>
+
+{% endblock %}

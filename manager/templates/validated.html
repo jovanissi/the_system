@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="manager_account">Management</a></div>
+		<div id="user_account_wrapper">
+			<div id="user_account_content">
+				<h4 id="slip_insertio_title">Slip validated</h4>
+				<form action="" id="">
+					<div id="date">
+						<ul>
+							<li>
+								<label for="Date">Date:</label>
+								<p>{{deposit.shareholder_deposit_date}}</p>
+							</li>
+						</ul>
+					</div>
+					<div id="number_name_slip">
+						<ul >
+							<li>
+								<label for="account_number">Account number:</label>
+								<p>{{deposit.shareholder_deposit_account}}</p>
+							</li>
+							<li>
+								<label for="account_number">Account name:</label>
+								<p>{{deposit.shareholder_deposit_acc_name}}</p>
+							</li>
+							<li>
+								<label for="slip_number">Slip number:</label>
+								<p>{{deposit.shareholder_deposit_slip_number}}</p>
+							</li>
+						</ul>
+					</div>
+					<div id="amount">
+						<ul>
+							<li>
+								<label for="amount">Deposited amount:</label>
+								<p>{{deposit.shareholder_deposited_amount}}</p>
+							</li>
+						</ul>
+					</div>
+					<div id="number_of_months">
+						<ul>
+							<li>
+								<div>
+									<label for="number_of_months">Period:</label>
+									<p>{{deposit.contribution_months}}</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div id="comment">
+						<ul>
+							<li>
+								<label for="comment">Comment:</label>
+								<p>{{deposit.shareholder_comment}}</p>
+							</li>
+						</ul>
+					</div>
+					<div id="validation_slip_picture">
+						<ul>
+							<li>
+								<label for="">Slip-picture</label>
+								<img src="{{user_deposits.shareholder_deposit_slip_picture.url}}" alt="">
+							</li>
+						</ul>
+					</div>
+					<div class="alert alert-success pull-left wow fadeInDown" role="alert">
+                        <h5>Slip validated</h5>
+					</div>
+				</form>
+			</div>
+		</div>	
+	</div>
+
+{% endblock %}

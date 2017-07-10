@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}	
+	
+	{% block css %}
+		<link rel="stylesheet" href="{% static 'css/mg_system2.css' %}" type="text/css">
+    {% endblock %}
+	<div class="continer">
+		<header id="header2" class="navbar-fixed-top">
+			<p id="core">Core labs+</p>
+		</header>
+		<div class="btn btn-default" id="management_button"><a href="user_account">My account</a></div>
+
+		<div id="user_redirection">
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="bitsa">Bitsa</a></li>
+			</ul>
+
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="user_deposit">Ayo wabikije</a></li>
+			</ul>
+
+			<ul>
+				<li class="btn btn-default" id="balance_button"><a href="ayasohotse">Ayasohotse</a></li>
+			</ul>
+		</div>
+
+		<h4 id="deposit_history">Historique y'uburyo wabikije</h4>
+		<table class="table table-condensed table-striped" >
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Account No</th>
+					<th>Account name</th>
+					<th>Slip number</th>
+					<th>Amount</th>
+					<th>Month</th>
+					<th>Comment</th>
+					<th>Categories</th>
+				</tr>
+			</thead>
+
+			{% for contributions in user_deposits %}
+			<tbody>
+				<tr>
+					<td>{{contributions.shareholder_deposit_date}}</td>
+					<td>{{contributions.shareholder_deposit_account}}</td>
+					<td>{{contributions.shareholder_deposit_acc_name}}</td>
+					<td>{{contributions.shareholder_deposit_slip_number}}</td>
+					<td>{{contributions.shareholder_deposited_amount}}</td>
+					<td>{{contributions.contribution_months}}</td>
+					<td>{{contributions.shareholder_comment}}</td>
+					<td>{{contributions.categories}}</td>
+				</tr>
+			</tbody>
+			{% endfor %}
+
+		</table>
+		<p id="table-title">Total deposited amount: {{sum_user_deposits}}Rwf</p>
+	</div>
+	<div class="alert alert-success pull-left wow fadeInRight" role="alert" id="success_alert">
+    	<h5>Slip submitted successfully</h5>
+	</div>
+{% endblock %}
