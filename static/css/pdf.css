@@ -1,0 +1,17 @@
+#header2
+{
+	position: fixed;
+	width: 100%;
+	background-color: #d42139;
+	color: #d42139;
+	margin-top: 0%;
+}
+
+#core
+{
+	font-weight: bold;
+	background-color: #d42139;
+	color: #fff;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
